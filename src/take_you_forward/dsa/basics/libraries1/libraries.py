@@ -1,3 +1,4 @@
+from collections import Counter, deque
 from math import prod
 from typing import Sequence
 
@@ -83,3 +84,41 @@ print(f"enumerate: {[(i, v) for i, v in enumerate(numbers)]}")
 # ----------------------------------------------------------------------------------------------------
 
 # from collections import deque, Counter, defaultdict, OrderedDict, namedtuple
+
+# deque - doube ended queue
+
+# used when fast add/remove from both ends needed
+# used for implementing stack and queue
+# used for sliding widnow plroblems
+# used for BFS travel
+dq = deque([1, 2, 3, 4, 5])  # deque([1, 2, 3, 4, 5])
+
+dq.append(6)  # deque([1, 2, 3, 4, 5, 6])
+dq.appendleft(0)  # deque([0, 1, 2, 3, 4, 5, 6])
+
+dq.pop()  # deque([1, 2, 3, 4, 5]) and return 6
+dq.popleft()  # deque([1, 2, 3, 4, 5]) and return 0
+
+dq.extend([6, 7])  # deque([1, 2, 3, 4, 5, 6, 7])
+dq.extendleft([0, -1])  # deque([-1, 0, 1, 2, 3, 4, 5, 6, 7])
+
+dq.rotate(1)  # deque([7, -1, 0, 1, 2, 3, 4, 5, 6])
+dq.rotate(2)  # deque([5, 6, 7, -1, 0, 1, 2, 3, 4])
+
+
+# Counter
+# Frequency counting
+# Most common elements
+# Anagram problems
+# Frequency-based problems
+counter = Counter([1, 2, 3, 4, 5, 1])
+
+counter.get(1)  # 2
+counter.most_common(2)  # [(1, 2), (2, 1)] 1, repeated 2 times and 2 1 times
+print(counter.items())  # dict_items([(1, 2), (2, 1), (3, 1), (4, 1), (5, 1)])
+print(list(counter.elements()))  # [1, 1, 2, 3, 4, 5]
+counter.update([1, 5])  # Counter({1: 3, 5: 2, 2: 1, 3: 1, 4: 1})
+counter.subtract([1])  # Counter({1: 2, 5: 2, 2: 1, 3: 1, 4: 1})
+
+
+# defaultdict
