@@ -22,5 +22,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    Solution().pattern2(5)
-    Solution().pattern2_2(5)
+    Solution().pattern2(10)
+    Solution().pattern2_2(10)
