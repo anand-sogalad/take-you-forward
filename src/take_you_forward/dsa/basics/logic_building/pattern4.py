@@ -10,4 +10,16 @@ Given an integer n. You need to recreate the pattern given below for any value o
 
 class Solution:
     def pattern4(self, n):
-        pass
+        for i in range(1, n + 1):
+            for _ in range(1, i + 1):
+                print(i, end="")
+            print()
+
+    def pattern4_2(self, n):
+        for i in range(1, n + 1):
+            print(str(i) * i)
+
+
+if __name__ == "__main__":
+    Solution().pattern4(10)
+    Solution().pattern4_2(10)
