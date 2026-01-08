@@ -1,3 +1,5 @@
+import bisect
+import heapq
 from collections import Counter, OrderedDict, defaultdict, deque, namedtuple
 from math import prod
 from typing import Sequence
@@ -168,3 +170,51 @@ p.y  # Access by name: 2
 p[0]  # Access by index: 1
 p[1]  # Access by index: 2
 # Immutable: p.x = 3  # ERROR! Cannot modify
+
+# ----------------------------------------------------------------------------------------------------
+
+# heapq
+# a priority q
+values = [11, 87, 54, 32, 76, 00, 99, 88, 78]
+heapq.heapify(values)
+heapq.heappush(values, 10)  # [10]
+heapq.heappush(values, 9)  # [9, 10]
+
+print(values)  # [9, 10] - because heap1 always sotres smallest value at first
+
+print(heapq.heappop(values))  # always return first value that would be smallest - 9
+
+print(heapq.heappushpop(values, 11))  # this first pushes 11 and pops smallest element
+print(heapq.heapreplace(values, 0))  # this pops first and then pushes the element
+print(heapq.nlargest(5, values))  # [99, 88, 87, 78, 76]
+print(heapq.nsmallest(5, values))  # [0, 0, 11, 32, 54]
+
+# we know that while pushing the elements using heapq, we get the smallest at first what if we alerady have existing list
+values = [11, 87, 54, 32, 76, 00, 99, 88, 78]
+heapq.heapify(values)
+print(values)  # [0, 32, 11, 78, 76, 54, 99, 88, 87]
+
+# by default it gets min value at first how to do it for max values?
+heapq.heapify_max(values)
+print(values)  # [99, 88, 54, 87, 76, 0, 11, 78, 32]
+
+heapq.heappush_max(values, 100)
+print(values)  # [100, 99, 54, 87, 88, 0, 11, 78, 32, 76]
+
+# same way for every operation we have max type as well
+
+# bisect
+# can be used for binary search
+values = [11, 87, 54, 32, 76, 00, 99, 88, 78]
+values.sort()  # sort the array, because bisect works only on sorted list/array
+
+bisect.bisect(
+    values, 0
+)  # this return right most idex in which I can insert value 0 whithout braking the sorted order
+
+bisect.bisect_left(
+    values, 0
+)  # this return left most idex in which I can insert value 0 whithout braking the sorted order
+
+bisect.insort(values, 10)  # it iserts at the right most suitable index
+bisect.insort_left(values, 9)  # it iserts at the left most suitable index
