@@ -8,20 +8,25 @@ Given an integer n. You need to recreate the pattern given below for any value o
 """
 
 
-class Solution:
-    def pattern3(self, n: int):
+class Solution(object):
+    def pattern3(self, n):
+        for i in range(n):
+            for j in range(i + 1):
+                print(j + 1, end="")
+            print()
+
+    def pattern32(self, n):
         for i in range(1, n + 1):
             for j in range(1, i + 1):
                 print(j, end="")
             print()
 
-    def pattern3_2(self, n: int):
-        string = ""
+    def pattern33(self, n):
         for i in range(1, n + 1):
-            string += str(i)
-            print(string)
+            print("".join([str(j) for j in range(1, i + 1)]))
 
 
 if __name__ == "__main__":
     Solution().pattern3(10)
-    Solution().pattern3_2(10)
+    Solution().pattern32(10)
+    Solution().pattern33(10)

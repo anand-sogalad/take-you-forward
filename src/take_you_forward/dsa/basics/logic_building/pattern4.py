@@ -8,18 +8,20 @@ Given an integer n. You need to recreate the pattern given below for any value o
 """
 
 
-class Solution:
+class Solution(object):
     def pattern4(self, n):
-        for i in range(1, n + 1):
-            for _ in range(1, i + 1):
-                print(i, end="")
+        for i in range(n):
+            for _ in range(i + 1):
+                print(i + 1, end="")
             print()
 
-    def pattern4_2(self, n):
+    def pattern42(self, n):
         for i in range(1, n + 1):
-            print(str(i) * i)
+            for _ in range(i):
+                print(i, end="")
+            print()
 
 
 if __name__ == "__main__":
     Solution().pattern4(10)
-    Solution().pattern4_2(10)
+    Solution().pattern42(10)

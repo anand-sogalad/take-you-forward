@@ -9,18 +9,18 @@ Let's say for N = 5, the pattern should look like as below:
 """
 
 
-class Solution:
-    def pattern1(self, n: int):
+class Solution(object):
+    def pattern1(self, n):
         for _ in range(n):
             for _ in range(n):
                 print("*", end="")
             print()
 
-    def pattern1_2(self, n: int):
+    def pattern12(self, n):
         for _ in range(n):
             print("*" * n)
 
 
 if __name__ == "__main__":
     Solution().pattern1(10)
-    Solution().pattern1_2(10)
+    Solution().pattern12(10)
