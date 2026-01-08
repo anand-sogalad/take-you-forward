@@ -1,4 +1,4 @@
-from collections import Counter, deque
+from collections import Counter, OrderedDict, defaultdict, deque, namedtuple
 from math import prod
 from typing import Sequence
 
@@ -122,3 +122,50 @@ counter.subtract([1])  # Counter({1: 2, 5: 2, 2: 1, 3: 1, 4: 1})
 
 
 # defaultdict
+# Never raises KeyError, creates default value
+# Grouping elements
+# Building graphs
+# Avoiding KeyError checks
+# Counting with auto-initialization
+dd = defaultdict(int)  # Default: 0
+dd["a"]  # Returns 0 (auto-created)
+dd["a"] += 1  # Now dd['a'] = 1
+
+dd_list = defaultdict(list)  # Default: []
+dd_list["fruits"].append("apple")  # Auto-creates list
+dd_list["fruits"]  # ['apple']
+
+dd_set = defaultdict(set)  # Default: set()
+dd_set["nums"].add(1)  # Auto-creates set
+dd_set["nums"]  # {1}
+
+dd_custom = defaultdict(lambda: "N/A")  # Custom default
+dd_custom["missing"]  # Returns "N/A"
+
+
+# LRU Cache implementation
+# Need ordered dictionary
+# Special pop operations
+od = OrderedDict([("a", 1), ("b", 2), ("c", 3)])
+od["d"] = 4  # Set value: OrderedDict([('a',1), ('b',2), ('c',3), ('d',4)])
+od.move_to_end("a")  # Move to end: OrderedDict([('b',2), ('c',3), ('d',4), ('a',1)])
+od.move_to_end(
+    "c", last=False
+)  # Move to beginning: OrderedDict([('c',3), ('b',2), ('d',4), ('a',1)])
+od.popitem()  # Remove last: returns ('a', 1)
+od.popitem(last=False)  # Remove first: returns ('c', 3)
+
+
+# namedTuple
+# Lightweight data structures
+# Return multiple values
+# Immutable records
+# Dictionary keys
+Point = namedtuple("Point", ["x", "y"])
+p = Point(1, 2)  # Create: Point(x=1, y=2)
+p.x  # Access by name: 1
+p.y  # Access by name: 2
+p[0]  # Access by index: 1
+p[1]  # Access by index: 2
+# Immutable: p.x = 3  # ERROR! Cannot modify
+
