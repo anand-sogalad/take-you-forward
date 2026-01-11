@@ -19,7 +19,7 @@ class Solution(object):
             ch = ord("A")
             for _ in range((i * 2 + 1) // 2):
                 print(chr(ch), end="")
-                ch+=1
+                ch += 1
 
             for _ in range(((i * 2 + 1) // 2) + 1):
                 print(chr(ch), end="")
