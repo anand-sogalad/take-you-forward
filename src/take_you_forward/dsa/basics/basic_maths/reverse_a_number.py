@@ -5,20 +5,15 @@ You are given an integer n. Return the integer formed by placing the digits of n
 
 class Solution(object):
     def reverse_number(self, n: int):
-        if 0 <= n <= 9:
-            return n
-
-        result = 0
-
+        reversed = 0
         while n > 0:
-            # get the last digit
-            last = n % 10
-            result = result * 10 + last
+            # reverse a number
+            reversed = reversed * 10 + (n % 10)
 
             # remove the last digit
             n //= 10
 
-        return result
+        return reversed
 
 
 if __name__ == "__main__":
