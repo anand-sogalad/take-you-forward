@@ -5,19 +5,20 @@ The number will have no leading zeroes, except when the number is 0 itself.
 
 
 class Solution(object):
-    def count_digit(self, n: int):
-        # return 1 if n is between 0 and 9
-        if 0 <= n <= 9:
+    def count_digits(self, n: int) -> int:
+        # if n is in single digit return 1
+        if 0 <= n <= 0:
             return 1
 
-        count = 0
-        while 0 < n:
+        # otherwise calculate digits it by diving by 10
+        counter = 0
+        while n > 0:
             n //= 10
-            count += 1
+            counter += 1
 
-        return count
+        # return the result
+        return counter
 
 
 if __name__ == "__main__":
-    result = Solution().count_digit(10)
-    print(result)
+    assert Solution().count_digits(12345) == 5
