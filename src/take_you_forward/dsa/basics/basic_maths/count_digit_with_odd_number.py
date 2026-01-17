@@ -5,20 +5,19 @@ The number will have no leading zeroes, except when the number is 0 itself.
 
 
 class Solution(object):
-    def count_odd_number_of_digits(self, n: int):
-        count = 0
+    def count_odd_digits(self, n: int) -> int:
+        counter = 0
         while n > 0:
-            # get the last digit and check if it even ort odd
-            ld = n % 10
+            # increase the counter if the last digit is not even number
+            counter = counter + 1 if (n % 10) % 2 != 0 else counter
 
-            if ld % 2 != 0:
-                count += 1
-
-            # continue removing last digit
+            # remove last digit from n
             n //= 10
-        return count
+
+        # return the result
+        return counter
 
 
 if __name__ == "__main__":
-    result = Solution().count_odd_number_of_digits(12345)
-    print(result)
+    for num, res in (5, 1), (25, 1):
+        assert Solution().count_odd_digits(num) == res
