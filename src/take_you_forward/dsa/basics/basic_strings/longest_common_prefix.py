@@ -8,23 +8,16 @@ If there is no common prefix, return an empty string "".
 class Solution(object):
     def longest_common_prefix(self, s: list[str]) -> str:
         # get the smallest str
-        left, right = 0, len(s) - 1
-        smallest = ""
+        min_len = len(min(s, key=len))
 
-        while left <= right:
-            smallest = s[left] if len(s[left]) < len(s[right]) else s[right]
-            left += 1
-            right -= 1
+        for i in range(min_len):
+            lcp = s[0][i]
 
-        # check if each string starts with smallest
-        while smallest:
-            for i in s:
-                if not i.startswith(smallest):
-                    smallest = smallest[:-1]
-                    break
-            else:
-                return smallest
-        return smallest
+            for j in range(1, len(s)):
+                if lcp != s[j][i]:
+                    return s[0][:i]
+
+        return s[0][:min_len]
 
 
 if __name__ == "__main__":
