@@ -1,26 +1,33 @@
-"""
-Given two strings s and t, determine if they are isomorphic. Two strings s and t are isomorphic if the characters in s can be replaced to get t.
-
-All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
-"""
-
-
 class Solution(object):
-    def is_isomorphic(self, s: str, t: str):
-        if len(s) == len(t):
-            mapping = {}
+    def is_isomorphic(self, s: str, t: str) -> bool:
+        """
+        Check if two strings are isomorphic using bidirectional mapping.
 
-            for i in range(len(s)):
-                if not mapping.get(t[i]) and s[i] not in mapping.values():
-                    mapping[t[i]] = s[i]
+        Time: O(n) - single pass through strings
+        Space: O(k) - two maps where k = distinct characters (effectively O(1) for fixed alphabet)
+        """
+        if len(s) != len(t):
+            return False
 
-            t = list(t)
-            for i in range(len(t)):
-                t[i] = mapping.get(t[i], "")
+        map_s_to_t: dict[str, str] = {}
+        map_t_to_s: dict[str, str] = {}
 
-            return s == "".join(t)
+        for cs, ct in zip(s, t):
+            # Check s -> t mapping
+            if cs in map_s_to_t:
+                if map_s_to_t[cs] != ct:
+                    return False
+            else:
+                map_s_to_t[cs] = ct
 
-        return False
+            # Check t -> s mapping (prevents collision: two s chars -> same t char)
+            if ct in map_t_to_s:
+                if map_t_to_s[ct] != cs:
+                    return False
+            else:
+                map_t_to_s[ct] = cs
+
+        return True
 
 
 if __name__ == "__main__":
@@ -29,5 +36,6 @@ if __name__ == "__main__":
         (("apple", "bbnbm"), False),
         (("paper", "title"), True),
         (("foo", "bar"), False),
+        (("ab", "aa"), False),  # Collision test
     ):
         assert Solution().is_isomorphic(*input) == output
