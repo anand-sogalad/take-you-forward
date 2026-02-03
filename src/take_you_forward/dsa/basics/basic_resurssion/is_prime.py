@@ -12,16 +12,16 @@ class Solution(object):
         if num <= 1:
             return False
 
-        return self._divide(num, num // 2)
+        return self._divide(num, 2)
 
     def _divide(self, num, n):
-        if n <= 1:
+        if n > num ** 0.5:
             return True
 
         if num % n == 0:
             return False
 
-        return self._divide(num, n - 1)
+        return self._divide(num, n +1)
 
 
 if __name__ == "__main__":
