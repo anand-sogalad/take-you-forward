@@ -8,10 +8,12 @@ A sorted array in non-decreasing order is an array where each element is greater
 class Solution:
     def selection_sort(self, nums):
         for i in range(len(nums) - 1):
+            min_idx = i
             for j in range(i + 1, len(nums)):
-                if nums[i] > nums[j]:
-                    nums[i], nums[j] = nums[j], nums[i]
-        return nums
+                if nums[j] < nums[min_idx]:
+                    min_idx = j
+
+            nums[i], nums[min_idx] = nums[min_idx], nums[i]
 
 
 if __name__ == "__main__":
