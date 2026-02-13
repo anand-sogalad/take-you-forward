@@ -57,3 +57,21 @@ So, both of them must exist
 - All of its applicaton data stored in Permanent memory (Storage)
 - When Application opened, it will be loaded on Random Access Memory (RAM)
 - And all of the instructions from application processed and execured by the CPU
+
+## What is programm?
+
+A program is a set of instructions that are written for computer to perform certain tasks
+
+for example
+
+- Calculator
+- Calendar
+- VS Code
+
+## What is programing?
+
+A programming is a process of writing program
+
+## What is programming language?
+
+A programing symentics using which instructions can be written and that can be converted to 0's and 1's
